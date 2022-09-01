@@ -1,3 +1,4 @@
 ^shiny\.emptystate\.Rproj$
 ^\.Rproj\.user$
 ^README\.Rmd$
+^examples$

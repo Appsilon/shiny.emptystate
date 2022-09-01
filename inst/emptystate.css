@@ -1,0 +1,10 @@
+.empty-state-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.empty-state-container {
+  z-index: 9999;
+}
