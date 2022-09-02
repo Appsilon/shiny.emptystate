@@ -2,11 +2,11 @@ const resizeObserver = new ResizeObserver((entries) => {
   entries.forEach(entry => {
 
     document.querySelectorAll(".empty-state-container").forEach(emptyStateContainer => {
-      const parentElementDimensions = emptyStateContainer.parentElement.getBoundingClientRect();
-      emptyStateContainer.style.height = parentElementDimensions.height + "px";
-      emptyStateContainer.style.width = parentElementDimensions.width + "px";
-      emptyStateContainer.style.left = parentElementDimensions.left + "px";
-      emptyStateContainer.style.top = parentElementDimensions.top + "px";
+      const parentElement = emptyStateContainer.parentElement;
+      emptyStateContainer.style.height = parentElement.offsetHeight + "px";
+      emptyStateContainer.style.width = parentElement.offsetWidth + "px";
+      emptyStateContainer.style.left = parentElement.offsetLeft + "px";
+      emptyStateContainer.style.top = parentElement.offsetTop + "px";
     })
   })
 });
@@ -23,13 +23,12 @@ function createEmptyStateContentElement(htmlContent) {
 function createEmptyStateContainer(elementToReplace) {
   const emptyStateContainer = document.createElement("div");
 
-  const elementToReplaceDimensions = elementToReplace.getBoundingClientRect();
   emptyStateContainer.style.position = "absolute";
 
-  const fieldsToCopy = ["bottom", "height", "left", "right", "top", "width"];
-  for (const field of fieldsToCopy) {
-    emptyStateContainer.style[field] = elementToReplaceDimensions[field] + "px";
-  }
+  emptyStateContainer.style.height = elementToReplace.offsetHeight + "px";
+  emptyStateContainer.style.width = elementToReplace.offsetWidth + "px";
+  emptyStateContainer.style.left = elementToReplace.offsetLeft + "px";
+  emptyStateContainer.style.top = elementToReplace.offsetTop + "px";
 
   emptyStateContainer.classList.add("empty-state-container");
 
@@ -82,11 +81,11 @@ $(function() {
 
   window.addEventListener("resize", function() {
     document.querySelectorAll(".empty-state-container").forEach(emptyStateContainer => {
-      const parentElementDimensions = emptyStateContainer.parentElement.getBoundingClientRect();
-      emptyStateContainer.style.height = parentElementDimensions.height + "px";
-      emptyStateContainer.style.width = parentElementDimensions.width + "px";
-      emptyStateContainer.style.left = parentElementDimensions.left + "px";
-      emptyStateContainer.style.top = parentElementDimensions.top + "px";
+      const parentElement= emptyStateContainer.parentElement;
+      emptyStateContainer.style.height = parentElement.offsetHeight + "px";
+      emptyStateContainer.style.width = parentElement.offsetWidth + "px";
+      emptyStateContainer.style.left = parentElement.offsetLeft + "px";
+      emptyStateContainer.style.top = parentElement.offsetTop + "px";
     })
   })
 })
