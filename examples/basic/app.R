@@ -9,7 +9,7 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
-  empty_state_content <- empty_state_content <- div(
+  empty_state_content <- div(
     style = "display: flex; justify-content: center; align-items: center; flex-direction: column",
     img(
       src = "https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg",
