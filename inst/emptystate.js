@@ -1,3 +1,16 @@
+const resizeObserver = new ResizeObserver((entries) => {
+  entries.forEach(entry => {
+
+    document.querySelectorAll(".empty-state-container").forEach(emptyStateContainer => {
+      const parentElementDimensions = emptyStateContainer.parentElement.getBoundingClientRect();
+      emptyStateContainer.style.height = parentElementDimensions.height + "px";
+      emptyStateContainer.style.width = parentElementDimensions.width + "px";
+      emptyStateContainer.style.left = parentElementDimensions.left + "px";
+      emptyStateContainer.style.top = parentElementDimensions.top + "px";
+    })
+  })
+});
+
 function createEmptyStateContentElement(htmlContent) {
   const emptyStateContentElement = document.createElement("div");
   emptyStateContentElement.innerHTML = htmlContent;
@@ -49,6 +62,8 @@ function showEmptyState(message) {
   emptyStateContainer.style.backgroundColor = backgroundColor;
 
   elementToReplace.appendChild(emptyStateContainer);
+
+  resizeObserver.observe(elementToReplace);
 }
 
 function hideEmptyState(message) {
@@ -58,9 +73,20 @@ function hideEmptyState(message) {
   const emptyStateContainer = elementWithEmptyState.querySelector(".empty-state-container");
 
   emptyStateContainer.remove();
+  resizeObserver.unobserve(elementToReplace);
 }
 
 $(function() {
   Shiny.addCustomMessageHandler("showEmptyState", showEmptyState)
   Shiny.addCustomMessageHandler("hideEmptyState", hideEmptyState)
+
+  window.addEventListener("resize", function() {
+    document.querySelectorAll(".empty-state-container").forEach(emptyStateContainer => {
+      const parentElementDimensions = emptyStateContainer.parentElement.getBoundingClientRect();
+      emptyStateContainer.style.height = parentElementDimensions.height + "px";
+      emptyStateContainer.style.width = parentElementDimensions.width + "px";
+      emptyStateContainer.style.left = parentElementDimensions.left + "px";
+      emptyStateContainer.style.top = parentElementDimensions.top + "px";
+    })
+  })
 })
