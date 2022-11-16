@@ -32,7 +32,7 @@ Appsilon
 
 <img src="https://avatars0.githubusercontent.com/u/6096772" align="right" alt="" width="6%" />
 
-Appsilon is the **Full Service Certified Posit Partner**. Learn more
+Appsilon is a **Full Service Certified Posit Partner**. Learn more
 at [appsilon.com](https://appsilon.com).
 
 Get in touch [opensource@appsilon.com](opensource@appsilon.com)
