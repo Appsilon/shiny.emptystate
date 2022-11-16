@@ -10,7 +10,7 @@ use_empty_state <- function() {
 }
 
 #' @export
-EmptyStateManager <- R6::R6Class(
+EmptyStateManager <- R6::R6Class( #nolint: object_name_linter
   classname = "EmptyStateManager",
   public = list(
     initialize = function(id, html_content, color = NULL) {
