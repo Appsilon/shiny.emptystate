@@ -2,3 +2,4 @@
 
 export(EmptyStateManager)
 export(use_empty_state)
+importFrom(R6,R6Class)
