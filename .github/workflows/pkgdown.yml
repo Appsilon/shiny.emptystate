@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - add-readme-and-webpage
   workflow_dispatch:
 
 name: pkgdown
