@@ -11,7 +11,7 @@
 
 In the context of dashboards you can encounter empty states when:
 
-1. Before displaying any charts a user needs to upload a file containing required data
+1. Before displaying any charts a user needs to upload a file containing the required data
 2. Users apply different filters to a dataset and there is no row matching the configured filters
 
 ![](./man/figures/file_upload_empty_state_example.gif)
@@ -30,7 +30,7 @@ How to use it?
 To start using `shiny.emptystate`, you need to:
 
 1. Include `use_empty_state()` in your UI definition
-2. Define the content you want to display as empty state (e.g. a message)
+2. Define the content you want to display as an empty state (e.g. a message)
 3. Create an instance of the `EmptyStateManager` class where you define by the `id` which element of your app should be covered with the empty state content 
 4. Use its `show` and `hide` methods to show or hide the empty state content depending on your custom logic (e.g. `nrow(data_to_display) > 0`)
 
