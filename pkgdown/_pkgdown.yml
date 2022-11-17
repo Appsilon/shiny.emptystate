@@ -29,6 +29,6 @@ navbar:
       href: reference/index.html
   right:
     - icon: fa-github fa-lg
-      href: https://github.com/Appsilon/shiny.router
+      href: https://github.com/Appsilon/shiny.emptystate
     - icon: fa-twitter fa-lg
       href: https://twitter.com/Appsilon
