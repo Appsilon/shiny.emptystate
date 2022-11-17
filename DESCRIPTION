@@ -1,19 +1,21 @@
 Package: shiny.emptystate
-Title: What the Package Does (One Line, Title Case)
+Title: Empty State Components For Shiny
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
+Authors@R:
+    person(given = "Ryszard",
+           family = "Szymański",
            role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+           email = "ryszard@appsilon.com")
+Description: Empty state components for Shiny.
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
-Imports: 
+RoxygenNote: 7.2.1
+Imports:
     htmltools,
     R6
+Suggests:
+    lintr,
+    rcmdcheck,
+    testthat
