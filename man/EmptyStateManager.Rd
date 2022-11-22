@@ -33,6 +33,7 @@ EmptyStateManager class
 \item{\code{html_content}}{html_content}
 
 \item{\code{color}}{color
+Current visibility state of the empty state UI
 Show empty state
 Hide empty state}
 }

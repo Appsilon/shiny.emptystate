@@ -27,6 +27,7 @@ EmptyStateManager <- R6Class( #nolint: object_name_linter
       private$.html_content <- private$process_html(html_content)
       private$.color <- color
     },
+    #' Current visibility state of the empty state UI
     empty_state_shown = FALSE,
     #' Show empty state
     show = function() {
