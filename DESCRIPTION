@@ -1,6 +1,6 @@
 Package: shiny.emptystate
 Title: Empty State Components For Shiny
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R:
     person(given = "Ryszard",
            family = "Szymański",
