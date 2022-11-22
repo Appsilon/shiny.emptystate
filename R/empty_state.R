@@ -27,17 +27,20 @@ EmptyStateManager <- R6Class( #nolint: object_name_linter
       private$.html_content <- private$process_html(html_content)
       private$.color <- color
     },
-
+    empty_state_shown = FALSE,
     #' Show empty state
     show = function() {
       session <- private$get_session()
 
       message <- private$create_show_message()
 
-      session$sendCustomMessage(
-        "showEmptyState",
-        message
-      )
+      if (!self$empty_state_shown) {
+        self$empty_state_shown <- TRUE
+        session$sendCustomMessage(
+          "showEmptyState",
+          message
+        )
+      }
     },
 
     #' Hide empty state
@@ -46,10 +49,13 @@ EmptyStateManager <- R6Class( #nolint: object_name_linter
 
       message <- private$create_hide_message()
 
-      session$sendCustomMessage(
-        "hideEmptyState",
-        message
-      )
+      if (self$empty_state_shown) {
+        self$empty_state_shown <- FALSE
+        session$sendCustomMessage(
+          "hideEmptyState",
+          message
+        )
+      }
     }
   ),
   private = list(
