@@ -16,7 +16,7 @@ use_empty_state <- function() {
 #' @importFrom R6 R6Class
 #'
 #' @export
-EmptyStateManager <- R6Class( #nolint: object_name_linter
+EmptyStateManager <- R6Class( # nolint: object_name_linter
   classname = "EmptyStateManager",
   public = list(
     #' @param id id
@@ -27,16 +27,18 @@ EmptyStateManager <- R6Class( #nolint: object_name_linter
       private$.html_content <- private$process_html(html_content)
       private$.color <- color
     },
-    #' Current visibility state of the empty state UI
-    empty_state_shown = FALSE,
+    #' Returns the current visibility state of the empty state UI
+    is_empty_state_show = function() {
+      private$empty_state_shown
+    },
     #' Show empty state
     show = function() {
       session <- private$get_session()
 
       message <- private$create_show_message()
 
-      if (!self$empty_state_shown) {
-        self$empty_state_shown <- TRUE
+      if (!private$empty_state_shown) {
+        private$empty_state_shown <- TRUE
         session$sendCustomMessage(
           "showEmptyState",
           message
@@ -50,8 +52,8 @@ EmptyStateManager <- R6Class( #nolint: object_name_linter
 
       message <- private$create_hide_message()
 
-      if (self$empty_state_shown) {
-        self$empty_state_shown <- FALSE
+      if (private$empty_state_shown) {
+        private$empty_state_shown <- FALSE
         session$sendCustomMessage(
           "hideEmptyState",
           message
@@ -63,6 +65,7 @@ EmptyStateManager <- R6Class( #nolint: object_name_linter
     .id = NA,
     .html_content = NA,
     .color = NA,
+    empty_state_shown = FALSE,
     get_session = function() {
       shiny::getDefaultReactiveDomain()
     },
