@@ -12,6 +12,7 @@ EmptyStateManager class
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-EmptyStateManager-new}{\code{EmptyStateManager$new()}}
+\item \href{#method-EmptyStateManager-is_empty_state_show}{\code{EmptyStateManager$is_empty_state_show()}}
 \item \href{#method-EmptyStateManager-show}{\code{EmptyStateManager$show()}}
 \item \href{#method-EmptyStateManager-hide}{\code{EmptyStateManager$hide()}}
 \item \href{#method-EmptyStateManager-clone}{\code{EmptyStateManager$clone()}}
@@ -33,12 +34,21 @@ EmptyStateManager class
 \item{\code{html_content}}{html_content}
 
 \item{\code{color}}{color
-Current visibility state of the empty state UI
+Returns the current visibility state of the empty state UI
 Show empty state
 Hide empty state}
 }
 \if{html}{\out{</div>}}
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-EmptyStateManager-is_empty_state_show"></a>}}
+\if{latex}{\out{\hypertarget{method-EmptyStateManager-is_empty_state_show}{}}}
+\subsection{Method \code{is_empty_state_show()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$is_empty_state_show()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-show"></a>}}
