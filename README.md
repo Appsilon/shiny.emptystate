@@ -18,15 +18,14 @@ In the context of dashboards you can encounter empty states when:
 
 The goal of this package is to make it easy to handle empty states in your shiny applications.
 
-How to install?
----------------
+## How to install?
 
 ```r
 remotes::install_github("Appsilon/shiny.emptystate")
 ```
 
-How to use it?
---------------
+## How to use it?
+
 To start using `shiny.emptystate`, you need to:
 
 1. Include `use_empty_state()` in your UI definition
@@ -73,8 +72,7 @@ shinyApp(ui, server)
 ```
 
 
-How to contribute?
-------------------
+## How to contribute?
 
 If you want to contribute to this project please submit a regular PR, once you're done with new feature or bug fix.
 
