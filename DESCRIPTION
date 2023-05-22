@@ -18,4 +18,5 @@ Imports:
 Suggests:
     lintr,
     rcmdcheck,
+    spelling,
     testthat
