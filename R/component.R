@@ -7,7 +7,22 @@
 #'
 #' @return an shiny.tag.
 #' @export
-empty_state_component <- function(content, title, subtitle = NULL, ...) {
+#'
+#' @examples
+#'
+#' library(shiny.emptystate)
+#'
+#' if (interactive()) {
+#'   empty_state_component(
+#'     fontawesome::fa(
+#'       name = "clipboard-question",
+#'       height = "15rem", width = "15rem"
+#'     ),
+#'     title = "Content is not available",
+#'     subtitle = "Please provide valid inputs to generate content."
+#'   )
+#' }
+empty_state_component <- function(content, title, subtitle = NULL) {
   htmltools::tags$div(
     class = "empty-state-component",
     content,

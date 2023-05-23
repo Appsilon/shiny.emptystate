@@ -15,6 +15,9 @@ use_empty_state <- function() {
 #' EmptyStateManager class
 #'
 #' @importFrom R6 R6Class
+#' @importFrom shiny getDefaultReactiveDomain
+#' @importFrom fontawesome fa
+#' @importFrom htmltools doRenderTags
 #'
 #' @export
 EmptyStateManager <- R6::R6Class( # nolint: object_name_linter
@@ -28,7 +31,10 @@ EmptyStateManager <- R6::R6Class( # nolint: object_name_linter
 
       if (is.null(html_content))
         html_content <- empty_state_component(
-          fontawesome::fa(name = "clipboard-question", height = "15rem", width = "15rem"),
+          fontawesome::fa(
+            name = "clipboard-question",
+            height = "15rem", width = "15rem"
+          ),
           title = "Content is not available",
           subtitle = "Please provide valid inputs to generate content."
         )
