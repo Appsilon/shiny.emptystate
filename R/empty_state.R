@@ -17,14 +17,21 @@ use_empty_state <- function() {
 #' @importFrom R6 R6Class
 #'
 #' @export
-EmptyStateManager <- R6Class( # nolint: object_name_linter
+EmptyStateManager <- R6::R6Class( # nolint: object_name_linter
   classname = "EmptyStateManager",
   public = list(
     #' @param id id
     #' @param html_content html_content
     #' @param color color
-    initialize = function(id, html_content, color = NULL) {
+    initialize = function(id, html_content = NULL, color = NULL) {
       private$.id <- id
+
+      if (is.null(html_content))
+        html_content <- empty_state_component(
+          fontawesome::fa(name = "clipboard-question", height = "15rem", width = "15rem"),
+          title = "Content is not available",
+          subtitle = "Please provide valid inputs to generate content."
+        )
       private$.html_content <- private$process_html(html_content)
       private$.color <- color
     },
