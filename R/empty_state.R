@@ -5,7 +5,8 @@ use_empty_state <- function() {
   htmltools::htmlDependency(
     name = "shiny.emptystate",
     version = utils::packageVersion("shiny.emptystate"),
-    src = system.file("", package = "shiny.emptystate"),
+    src = "",
+    package = "shiny.emptystate",
     script = "emptystate.js",
     stylesheet = "emptystate.css"
   )
