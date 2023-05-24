@@ -1,22 +1,21 @@
 Package: shiny.emptystate
 Title: Empty State Components For Shiny
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R:
-    person(given = "Ryszard",
-           family = "Szymański",
-           role = c("aut", "cre"),
-           email = "ryszard@appsilon.com")
+    person("Ryszard", "Szymański", , "ryszard@appsilon.com", role = c("aut", "cre"))
 Description: Empty state components for Shiny.
 License: MIT + file LICENSE
+Imports:
+    fontawesome,
+    htmltools,
+    R6,
+    shiny,
+    utils
+Suggests:
+    bsicons,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
-Imports:
-    htmltools,
-    R6
-Suggests:
-    lintr,
-    rcmdcheck,
-    spelling,
-    testthat
+RoxygenNote: 7.2.3

@@ -4,5 +4,7 @@
 ^examples$
 docs
 .github
+^\.gitignore$
+^\.lintr$
 pkgdown
 ^LICENSE\.md$
