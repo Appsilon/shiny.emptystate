@@ -34,6 +34,9 @@ jobs:
         with:
           extra-packages: local::. # Necessary to avoid object usage linter errors.
 
+      - name: Install Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+
       - name: R CMD check
         if: always()
         uses: r-lib/actions/check-r-package@v2

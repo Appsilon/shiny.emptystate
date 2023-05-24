@@ -1,0 +1,53 @@
+---
+title: "Use Image as Empty State"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Use Image as Empty State}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+`shiny.emptystate` allows for easy creation and handling of empty state components in a Shiny application. 
+Users can create empty state components by creating their own html contents. 
+This means that users can also include images in their empty states.
+
+Using images as empty state can be as easy as providing the `src` in `shiny::tags$image()`/`shiny::tags$img()`.
+
+For vanilla Shiny, we suggest storing your images in a directory within `www`.
+When creating the empty state manager, either use the path to the image, e.g. `www/img/image.png` as `src`
+
+```r
+empty_state_manager <- EmptyStateManager$new(
+    id = "myElement",
+    html_content = tags$image(src = "www/img/image.png")
+  )
+```
+Or if you are using the utility function `empty_state_component()`, 
+
+```r
+empty_state <- empty_state_component(
+  content = tags$img(src = "www/img/image.png"),
+  title = "No content to display"
+  )
+```
+For a [Rhino](https://appsilon.github.io/rhino/index.html) application, we suggest storing images in a directory within `app/static`. 
+
+If the image is in `app/static/img/image.png`, you can use the same code as above.
+Update the `src` path accordingly.
+
+```r
+empty_state_manager <- EmptyStateManager$new(
+    id = "myElement",
+    html_content = tags$image(src = "app/static/img/image.png")
+  )
+  
+empty_state <- empty_state_component(
+  content = tags$img(src = "app/static/img/image.png"),
+  title = "No content to display"
+  )
+```
+
+All image file formats (including `gif`) should work, but we suggest using `png` and `svg`.
+URL paths can also work, but we suggest keeping the images in the application's directory path.
+
+The size of the images can be specified inline, e.g. `style = "height = "10rem"`, or through CSS.
