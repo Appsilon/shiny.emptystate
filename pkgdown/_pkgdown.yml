@@ -23,6 +23,9 @@ template:
         gtag('js', new Date());
         gtag('config', 'G-FQQZL5V93G');
       </script>
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+    before_navbar: |
+      <a href="https://rhinoverse.dev" class="home"><i class="fa fa-lg fa-chevron-left"></i></a>
 
 url: https://appsilon.github.io/shiny.emptystate/
 
@@ -40,3 +43,20 @@ navbar:
       href: https://github.com/Appsilon/shiny.emptystate
     - icon: fa-twitter fa-lg
       href: https://twitter.com/Appsilon
+    - icon: fab fa-mastodon fa-lg
+      href: https://fosstodon.org/@appsilon
+
+home:
+  sidebar:
+    structure: [star, links, license, community, citation, authors, dev]
+    components:
+      star:
+        title: GitHub
+        text: |
+          <a class="github-button" href="https://github.com/appsilon/shiny.emptystate" data-size="large" data-show-count="true" aria-label="Star appsilon/shiny.emptystate on GitHub">Star</a>
+
+footer:
+  structure:
+    left: developed
+  components:
+    developed: "Developed with :heart: by [Appsilon](https://appsilon.com)."
