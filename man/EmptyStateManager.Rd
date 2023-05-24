@@ -23,7 +23,11 @@ EmptyStateManager class
 \if{latex}{\out{\hypertarget{method-EmptyStateManager-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$new(id, html_content = NULL, color = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$new(
+  id,
+  html_content = default_empty_state_component(),
+  color = NULL
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

@@ -16,11 +16,6 @@
   align-items: center;
 }
 
-.empty-state-content .empty-state-component img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
 .empty-state-content .empty-state-component .empty-state-title {
   margin: 1rem;
   margin-bottom: 0;

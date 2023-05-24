@@ -15,10 +15,16 @@ empty_state_component(content, title, subtitle = NULL)
 defaults to \code{NULL}}
 }
 \value{
-an shiny.tag.
+a shiny.tag.
 }
 \description{
 Create an empty state component
+}
+\details{
+\code{content} works best with \code{\link[fontawesome:fa]{fontawesome::fa()}} and \code{\link[bsicons:bs_icon]{bsicons::bs_icon()}}.
+\code{\link[shiny:icon]{shiny::icon()}} will also work, but this will require loading the
+html dependencies in the ui, i.e. calling \code{\link[fontawesome:fa_html_dependency]{fontawesome::fa_html_dependency()}}
+to use icons from FontAwesome.Glyphicon does not need any html dependency.
 }
 \examples{
 
@@ -26,9 +32,15 @@ library(shiny.emptystate)
 
 if (interactive()) {
   empty_state_component(
-    fontawesome::fa(
-      name = "clipboard-question",
-      height = "15rem", width = "15rem"
+    fontawesome::fa(name = "clipboard-question", height = "10rem"),
+    title = "Content is not available",
+    subtitle = "Please provide valid inputs to generate content."
+  )
+
+  empty_state_component(
+    bsicons::bs_icon(
+      name = "question-square",
+      height = "15rem"
     ),
     title = "Content is not available",
     subtitle = "Please provide valid inputs to generate content."
