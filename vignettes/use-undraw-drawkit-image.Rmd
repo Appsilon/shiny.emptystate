@@ -1,8 +1,8 @@
 ---
-title: "How to Use unDraw/Drawkit illustrations"
+title: "How to Use unDraw/Drawkit Illustrations"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{How to Use Undraw/Drawkit illustrations}
+  %\VignetteIndexEntry{How to Use unDraw/Drawkit Illustrations}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
