@@ -8,3 +8,4 @@ docs
 ^\.lintr$
 pkgdown
 ^LICENSE\.md$
+vignettes

@@ -2,3 +2,4 @@
 .DS_STORE
 .Rhistory
 docs
+inst/doc

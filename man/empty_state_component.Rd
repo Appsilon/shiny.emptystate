@@ -40,7 +40,7 @@ if (interactive()) {
   empty_state_component(
     bsicons::bs_icon(
       name = "question-square",
-      height = "15rem"
+      size = "15rem"
     ),
     title = "Content is not available",
     subtitle = "Please provide valid inputs to generate content."
