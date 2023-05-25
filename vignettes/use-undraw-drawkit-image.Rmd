@@ -58,9 +58,7 @@ The size of the images can be specified inline, e.g. `style = "height = "10rem"`
 
 # Using Images from DrawKit/unDraw
 
-The licenses of [DrawKit](https://www.drawkit.com/license) and [unDraw](https://undraw.co/license) allows the use of their images for visual improvements only.
-
-unDraw allows for direct download of images, as `svg` or `png`. DrawKit requires an e-mail where they will send the download link for the selected set of images.
+**Important:** Before using illustrations from the mentioned services, please get acquainted with their respective licenses: [DrawKit License](https://www.drawkit.com/license), [unDraw License](https://undraw.co/license).
 
 We will use an image from unDraw as an example.
 
@@ -79,7 +77,46 @@ library(fontawesome)
 ui <-
   fluidPage(
     tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "styles.css")
+      tags$style(HTML(
+        "body > div.container-fluid {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        #my_table {
+          margin-top: 5rem;
+          margin-bottom: 2rem;
+        }
+
+        #my_image {
+          height: 25rem;
+        }
+
+        #toggle_emptystate_buttons {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+
+        #show {
+          border-color: transparent;
+          border: 0;
+          background-color: #3838fa;
+          color: white;
+          font-weight: 600;
+          margin-right: 0.25rem;
+        }
+
+        #hide {
+          border-color: transparent;
+          border: 0;
+          background-color: #9c9cfc;
+          color: black;
+          font-weight: 600;
+          margin-left: 0.25rem;
+        }"
+      ))
     ),
     use_empty_state(),
     reactableOutput("my_table", width = "60%"),
