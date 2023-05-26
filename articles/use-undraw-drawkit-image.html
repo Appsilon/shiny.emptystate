@@ -148,13 +148,18 @@ use the path to the image, e.g. <code>www/img/image.png</code> as
 <span>  <span class="op">)</span></span></code></pre></div>
 <p>For a <a href="https://appsilon.github.io/rhino/index.html" class="external-link">Rhino</a>
 application, we suggest storing images in a directory within
-<code>app/static</code>.</p>
+<code>app/static</code>. Rhino encourages the use of Shiny modules, so
+when creating an empty state manager always namespace the id of the
+element you want to handle.</p>
 <p>If the image is in <code>app/static/img/image.png</code>, you can use
 the same code as above. Update the <code>src</code> path
 accordingly.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">empty_state_manager</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/EmptyStateManager.html">EmptyStateManager</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
-<span>    id <span class="op">=</span> <span class="st">"myElement"</span>,</span>
+<code class="sourceCode R"><span><span class="co"># In your module's server function</span></span>
+<span><span class="va">ns</span> <span class="op">&lt;-</span> <span class="va">session</span><span class="op">$</span><span class="va">ns</span></span>
+<span></span>
+<span><span class="va">empty_state_manager</span> <span class="op">&lt;-</span> <span class="va"><a href="../reference/EmptyStateManager.html">EmptyStateManager</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>    id <span class="op">=</span> <span class="fu">ns</span><span class="op">(</span><span class="st">"myElement"</span><span class="op">)</span>,</span>
 <span>    html_content <span class="op">=</span> <span class="va">tags</span><span class="op">$</span><span class="fu">image</span><span class="op">(</span>src <span class="op">=</span> <span class="st">"app/static/img/image.png"</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span>
 <span>  </span>
