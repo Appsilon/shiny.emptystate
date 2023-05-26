@@ -13,10 +13,11 @@ Imports:
     utils
 Suggests:
     bsicons,
+    covr,
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
-VignetteBuilder: 
+VignetteBuilder:
     knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
