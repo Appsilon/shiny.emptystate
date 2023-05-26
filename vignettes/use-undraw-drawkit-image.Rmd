@@ -34,14 +34,17 @@ empty_state <- empty_state_component(
   title = "No content to display"
   )
 ```
-For a [Rhino](https://appsilon.github.io/rhino/index.html) application, we suggest storing images in a directory within `app/static`. 
+For a [Rhino](https://appsilon.github.io/rhino/index.html) application, we suggest storing images in a directory within `app/static`. Rhino encourages the use of Shiny modules, so when creating an empty state manager always namespace the id of the element you want to handle.
 
 If the image is in `app/static/img/image.png`, you can use the same code as above.
 Update the `src` path accordingly.
 
 ```r
+# In your module's server function
+ns <- session$ns
+
 empty_state_manager <- EmptyStateManager$new(
-    id = "myElement",
+    id = ns("myElement"),
     html_content = tags$image(src = "app/static/img/image.png")
   )
   
