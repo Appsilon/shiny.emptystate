@@ -2,13 +2,13 @@ describe("EmptyStateManager", {
   test_class <- EmptyStateManager$new("test_id")
 
   # function for type check
-  class_type_tests <- function(manager_class){
+  class_type_tests <- function(manager_class) {
     expect_true(R6::is.R6(manager_class))
     expect_s3_class(manager_class, "EmptyStateManager")
   }
 
   # function to test sanity of public members
-  public_member_tests <- function(manager_class){
+  public_member_tests <- function(manager_class) {
     expect_true(exists("show", manager_class))
     expect_true(exists("hide", manager_class))
     expect_true(exists("clone", manager_class))
@@ -20,7 +20,7 @@ describe("EmptyStateManager", {
   # function to test sanity of private members
   private_member_tests <- function(manager_class, id_attr,
                                    html_attr = default_empty_state_component(),
-                                   color_attr = NULL){
+                                   color_attr = NULL) {
     expect_equal(manager_class$.__enclos_env__$private$.id, id_attr)
     expect_equal(manager_class$.__enclos_env__$private$.html_content,
                  as.character(html_attr))
@@ -71,7 +71,7 @@ describe("use_empty_state()", {
     expect <- paste(
       '<link href=\"/', src_files[[1]],
       '\" rel=\"stylesheet\" />\n<script src=\"/',
-      src_files[[2]],'\"></script>',
+      src_files[[2]], '\"></script>',
       sep = "")
     test_dep <- htmltools::renderDependencies(list(test_func))
     expect_equal(!!as.character(test_dep), !!expect)
