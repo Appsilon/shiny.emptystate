@@ -1,64 +1,44 @@
 describe("EmptyStateManager", {
-  test_class <- EmptyStateManager$new("test_id")
-
-  # function for type check
-  class_type_tests <- function(manager_class) {
-    expect_true(R6::is.R6(manager_class))
-    expect_s3_class(manager_class, "EmptyStateManager")
-  }
-
-  # function to test sanity of public members
-  public_member_tests <- function(manager_class) {
-    expect_true(exists("show", manager_class))
-    expect_true(exists("hide", manager_class))
-    expect_true(exists("clone", manager_class))
-    expect_true(exists("initialize", manager_class))
-    expect_true(exists("is_empty_state_show", manager_class))
-    expect_false(manager_class$is_empty_state_show())
-  }
-
-  # function to test sanity of private members
-  private_member_tests <- function(manager_class, id_attr,
-                                   html_attr = default_empty_state_component(),
-                                   color_attr = NULL) {
-    expect_equal(manager_class$.__enclos_env__$private$.id, id_attr)
-    expect_equal(manager_class$.__enclos_env__$private$.html_content,
-                 as.character(html_attr))
-    expect_equal(manager_class$.__enclos_env__$private$.color,
-                 color_attr)
-  }
-
-  test_that("manager class can be instantiated", {
-    class_type_tests(manager_class = test_class)
+  it("should be R6 & EmptyStateManager class", {
+    test_class <- EmptyStateManager$new("test_id")
+    expect_true(R6::is.R6(test_class))
+    expect_s3_class(test_class, "EmptyStateManager")
   })
 
-  test_that("manager class's public components exists", {
-    public_member_tests(manager_class = test_class)
+  it("should initialize with is_empty_state_show FALSE", {
+    test_class <- EmptyStateManager$new("test_id")
+    expect_false(test_class$is_empty_state_show())
   })
 
-  test_that("manager class's private components exists", {
+  it("should contain default_empty_state_component when no content is passed", {
+    test_class <- EmptyStateManager$new("test_id")
+    expect_equal(test_class$.__enclos_env__$private$.html_content,
+                 as.character(default_empty_state_component()))
+  })
+
+  it("should contain passed color", {
     test_class <- EmptyStateManager$new("test_id",
                                         color = "navy")
-
-    private_member_tests(manager_class = test_class,
-                         id_attr = "test_id",
-                         color_attr = "navy")
+    expect_equal(test_class$.__enclos_env__$private$.color,
+                 "navy")
   })
 
-  test_that("manager class can be cloned properly", {
-    test_class_cloned <- test_class$clone(deep = TRUE)
-
-    class_type_tests(manager_class = test_class_cloned)
-    public_member_tests(manager_class = test_class_cloned)
-    private_member_tests(manager_class = test_class_cloned,
-                         id_attr = "test_id")
-  })
-
-  test_that("manager class object cannot be modified (class should be locked)", {
+  it("checks if manager class object cannot be modified (class should be locked)", {
+    test_class <- EmptyStateManager$new("test_id")
     expect_error(test_class$new_member <- 1)
     expect_error(test_class$is_empty_state_show <- function() TRUE)
     expect_error(test_class$hide <- function() FALSE)
     expect_error(test_class$show <- function() TRUE)
+  })
+
+  it("checks if show and hide functionality work", {
+    expected_div <- "<div class=\"empty-state-content\"><div style=\"display: flex; justify-content: center; align-items: center; flex-direction: column\">\n  <img src=\"https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg\" style=\"height: 180px; width: 270px; margin-bottom: 8px;\">\n  <div style=\"font-size: 16px\">This is  example empty state content</div>\n</div></div>"
+    app <- shinytest2::AppDriver$new("../../examples/basic/app.R")
+    app$click("show")
+    expect_equal(app$get_html(selector = ".empty-state-content"),
+                 expected_div)
+    app$click("hide")
+    expect_null(app$get_html(selector = ".empty-state-content"))
   })
 })
 
@@ -67,17 +47,17 @@ describe("use_empty_state()", {
   src_files <- list("emptystate.css",
                     "emptystate.js")
 
-  test_that("source files are added properly", {
-    expect <- paste(
+  it("should add source files properly", {
+    expect <- paste0(
       '<link href=\"/', src_files[[1]],
       '\" rel=\"stylesheet\" />\n<script src=\"/',
-      src_files[[2]], '\"></script>',
-      sep = "")
+      src_files[[2]], '\"></script>'
+    )
     test_dep <- htmltools::renderDependencies(list(test_func))
     expect_equal(!!as.character(test_dep), !!expect)
   })
 
-  test_that("dependencies are added properly", {
+  test_that("should add dependencies properly", {
     expect_equal(test_func$name, "shiny.emptystate")
     expect_equal(test_func$package, "shiny.emptystate")
     expect_equal(test_func$script, src_files[[2]])

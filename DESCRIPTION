@@ -18,6 +18,7 @@ Suggests:
     lintr,
     rcmdcheck,
     rmarkdown,
+    shinytest2,
     spelling,
     testthat (>= 3.0.0)
 VignetteBuilder:
