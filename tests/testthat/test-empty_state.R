@@ -31,14 +31,22 @@ describe("EmptyStateManager", {
     expect_error(test_class$show <- function() TRUE)
   })
 
-  it("checks if show and hide functionality work", {
-    expected_div <- "<div class=\"empty-state-content\"><div style=\"display: flex; justify-content: center; align-items: center; flex-direction: column\">\n  <img src=\"https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg\" style=\"height: 180px; width: 270px; margin-bottom: 8px;\">\n  <div style=\"font-size: 16px\">This is  example empty state content</div>\n</div></div>"
-    app <- shinytest2::AppDriver$new("../../examples/basic/app.R")
+  it("checks if show functionality work", {
+    expected_div <-
+      "<div class=\"empty-state-content\"><div class=\"myDiv\"></div></div>"
+    app <- shinytest2::AppDriver$new("test_app/app.R")
     app$click("show")
     expect_equal(app$get_html(selector = ".empty-state-content"),
-                 expected_div)
+                 as.character(expected_div))
+    app$stop()
+  })
+
+  it("checks if hide functionality work", {
+    app <- shinytest2::AppDriver$new("test_app/app.R")
+    app$click("show")
     app$click("hide")
     expect_null(app$get_html(selector = ".empty-state-content"))
+    app$stop()
   })
 })
 
