@@ -27,4 +27,6 @@ server <- function(input, output, session) {
   output$my_table <- renderTable(data.frame(NA))
 }
 
-shinyApp(ui, server)
+if (!interactive()) {
+  shinyApp(ui, server)
+}
