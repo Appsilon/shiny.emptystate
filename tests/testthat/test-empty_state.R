@@ -34,7 +34,7 @@ describe("EmptyStateManager", {
   it("checks if show functionality work when button is clicked", {
     expected_div <-
       "<div class=\"empty-state-content\"><div class=\"myDiv\"></div></div>"
-    app <- shinytest2::AppDriver$new("test_app/app.R")
+    app <- shinytest2::AppDriver$new(test_app(), name = "test")
     app$click("show")
     expect_equal(app$get_html(selector = ".empty-state-content"),
                  as.character(expected_div))
@@ -44,7 +44,7 @@ describe("EmptyStateManager", {
   it("checks if show functionality work when button is not clicked", {
     expected_div <-
       "<div class=\"empty-state-content\"><div class=\"myDiv\"></div></div>"
-    app <- shinytest2::AppDriver$new("test_app/app.R")
+    app <- shinytest2::AppDriver$new(test_app(), name = "test")
     testthat::expect_false(
       identical(app$get_html(selector = ".empty-state-content"),
                 as.character(expected_div)))
@@ -52,7 +52,7 @@ describe("EmptyStateManager", {
   })
 
   it("checks if hide functionality work", {
-    app <- shinytest2::AppDriver$new("test_app/app.R")
+    app <- shinytest2::AppDriver$new(test_app(), name = "test")
     app$click("show")
     app$click("hide")
     expect_null(app$get_html(selector = ".empty-state-content"))
