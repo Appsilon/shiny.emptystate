@@ -10,4 +10,5 @@ library(testthat)
 library(shiny.emptystate)
 library(shinytest2)
 use_shinytest2()
+
 test_check("shiny.emptystate")

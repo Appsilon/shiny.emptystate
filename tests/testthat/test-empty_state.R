@@ -12,15 +12,15 @@ describe("EmptyStateManager", {
 
   it("should contain default_empty_state_component when no content is passed", {
     test_class <- EmptyStateManager$new("test_id")
-    expect_equal(test_class$.__enclos_env__$private$.html_content,
-                 as.character(default_empty_state_component()))
+    expect_equal(
+      test_class$.__enclos_env__$private$.html_content,
+      as.character(default_empty_state_component())
+      )
   })
 
   it("should contain passed color", {
-    test_class <- EmptyStateManager$new("test_id",
-                                        color = "navy")
-    expect_equal(test_class$.__enclos_env__$private$.color,
-                 "navy")
+    test_class <- EmptyStateManager$new("test_id", color = "navy")
+    expect_equal(test_class$.__enclos_env__$private$.color, "navy")
   })
 
   it("checks if manager class object cannot be modified (class should be locked)", {
@@ -31,27 +31,25 @@ describe("EmptyStateManager", {
     expect_error(test_class$show <- function() TRUE)
   })
 
-  it("checks if show functionality work when button is clicked", {
+  it("checks the empty state component is visible when triggered", {
     expected_div <-
       "<div class=\"empty-state-content\"><div class=\"myDiv\"></div></div>"
     app <- shinytest2::AppDriver$new(test_app(), name = "test")
     app$click("show")
-    expect_equal(app$get_html(selector = ".empty-state-content"),
-                 as.character(expected_div))
+    expect_equal(
+      app$get_html(selector = ".empty-state-content"),
+      as.character(expected_div)
+      )
     app$stop()
   })
 
-  it("checks if show functionality work when button is not clicked", {
-    expected_div <-
-      "<div class=\"empty-state-content\"><div class=\"myDiv\"></div></div>"
+  it("checks the empty state component is hidden when not triggered", {
     app <- shinytest2::AppDriver$new(test_app(), name = "test")
-    testthat::expect_false(
-      identical(app$get_html(selector = ".empty-state-content"),
-                as.character(expected_div)))
+    expect_null(app$get_html(selector = ".empty-state-content"))
     app$stop()
   })
 
-  it("checks if hide functionality work", {
+  it("checks the empty state component is hidden when triggered", {
     app <- shinytest2::AppDriver$new(test_app(), name = "test")
     app$click("show")
     app$click("hide")
@@ -63,8 +61,10 @@ describe("EmptyStateManager", {
 
 describe("use_empty_state()", {
   test_func <- use_empty_state()
-  src_files <- list("emptystate.css",
-                    "emptystate.js")
+  src_files <- list(
+    "emptystate.css",
+    "emptystate.js"
+    )
 
   it("should add source files properly", {
     expect <- paste0(
@@ -76,7 +76,7 @@ describe("use_empty_state()", {
     expect_equal(!!as.character(test_dep), !!expect)
   })
 
-  test_that("should add dependencies properly", {
+  it("should add dependencies properly", {
     expect_equal(test_func$name, "shiny.emptystate")
     expect_equal(test_func$package, "shiny.emptystate")
     expect_equal(test_func$script, src_files[[2]])

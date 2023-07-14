@@ -1,8 +1,14 @@
-# Check: for detritus in the temp directory
-# Result: NOTE
-#     Found the following files/directories:
-#      ‘Crashpad’
-# Flavors: r-devel-linux-x86_64-fedora-clang, r-devel-linux-x86_64-fedora-gcc
+# ❯ checking for detritus in the temp directory ... NOTE
+# Found the following files/directories:
+#   ‘Crashpad’
+#
+# 0 errors ✔ | 0 warnings ✔ | 1 note ✖
+# Error: Error: R CMD check found NOTEs
+# Flavors: ubuntu-22.04 (devel), ubuntu-22.04 (release), ubuntu-22.04 (oldrel)
+
+# References (shinytest2 github):
+# 1. https://github.com/rstudio/shinytest2/blob/main/cran-comments.md
+# 2. https://github.com/rstudio/shinytest2/blob/main/tests/testthat/setup-disable-crashpad.R
 
 # Disable crash reporting on CRAN machines. (Can't get the report anyways)
 chromote::set_chrome_args(c(
