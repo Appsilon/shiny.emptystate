@@ -4,6 +4,7 @@
 
 <!-- badges: start -->
 ![R-CMD-check](https://github.com/Appsilon/shiny.emptystate/workflows/R-CMD-check/badge.svg)
+[![codecov](https://codecov.io/gh/Appsilon/shiny.emptystate/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Appsilon/shiny.emptystate/)
 <!-- badges: end -->
 
 
