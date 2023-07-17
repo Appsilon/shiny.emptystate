@@ -20,8 +20,6 @@ chromote::set_chrome_args(c(
 
 # Make sure the temp folder is removed when testing is complete
 withr::defer({
-  # Close the browser
-  try(chromote::default_chromote_object()$get_browser()$close())
 
   # Clean up chromote sessions
   gc() # Run R6 finalizer methods
