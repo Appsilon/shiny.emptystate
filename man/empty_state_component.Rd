@@ -7,18 +7,18 @@
 empty_state_component(content, title, subtitle = NULL)
 }
 \arguments{
-\item{content}{an HTML, tag object to render}
+\item{content}{An HTML tag object used to render & provides main content for the empty state.}
 
-\item{title}{a character, main text to describe empty state content}
+\item{title}{A character string representing the main text that describes the empty state content.}
 
-\item{subtitle}{a character, supporting details about the empty state;
-defaults to \code{NULL}}
+\item{subtitle}{A character string providing supporting details about the empty state.
+Defaults to \code{NULL}}
 }
 \value{
 a shiny.tag.
 }
 \description{
-Create an empty state component
+Function to create a custom empty state component.
 }
 \details{
 \code{content} works best with \code{\link[fontawesome:fa]{fontawesome::fa()}} and \code{\link[bsicons:bs_icon]{bsicons::bs_icon()}}.
@@ -27,7 +27,6 @@ html dependencies in the ui, i.e. calling \code{\link[fontawesome:fa_html_depend
 to use icons from FontAwesome.Glyphicon does not need any html dependency.
 }
 \examples{
-
 library(shiny.emptystate)
 
 if (interactive()) {
@@ -46,4 +45,5 @@ if (interactive()) {
     subtitle = "Please provide valid inputs to generate content."
   )
 }
+
 }

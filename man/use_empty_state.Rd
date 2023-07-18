@@ -2,10 +2,25 @@
 % Please edit documentation in R/empty_state.R
 \name{use_empty_state}
 \alias{use_empty_state}
-\title{Use empty state}
+\title{Add empty state dependency}
 \usage{
 use_empty_state()
 }
+\value{
+a html_dependency object
+}
 \description{
-Use empty state
+Empty state dependencies to include anywhere in your UI but ideally at the top.
+}
+\examples{
+library(shiny)
+library(shiny.emptystate)
+
+if (interactive()) {
+  ui <- fluidPage(
+    use_empty_state(),
+    dataTableOutput("my_table")
+  )
+}
+
 }

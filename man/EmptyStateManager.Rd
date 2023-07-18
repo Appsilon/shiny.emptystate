@@ -2,11 +2,39 @@
 % Please edit documentation in R/empty_state.R
 \name{EmptyStateManager}
 \alias{EmptyStateManager}
-\title{EmptyStateManager class}
+\title{EmptyStateManager R6 class}
 \description{
-EmptyStateManager class
+Create an EmptyStateManager to then show or hide content.
+}
+\details{
+Create an object to show an empty state content on selected id specified by \code{id} param.
+Then \code{show} or \code{hide} or use \code{is_empty_state_show} to check the status.
+}
+\examples{
 
-EmptyStateManager class
+## ------------------------------------------------
+## Method `EmptyStateManager$new`
+## ------------------------------------------------
+
+empty_state_manager <- EmptyStateManager$new(id = "my_table")
+
+## ------------------------------------------------
+## Method `EmptyStateManager$is_empty_state_show`
+## ------------------------------------------------
+
+empty_state_manager$is_empty_state_show()
+
+## ------------------------------------------------
+## Method `EmptyStateManager$show`
+## ------------------------------------------------
+
+\dontrun{empty_state_manager$show()}
+
+## ------------------------------------------------
+## Method `EmptyStateManager$hide`
+## ------------------------------------------------
+
+\dontrun{empty_state_manager$hide()}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -22,6 +50,7 @@ EmptyStateManager class
 \if{html}{\out{<a id="method-EmptyStateManager-new"></a>}}
 \if{latex}{\out{\hypertarget{method-EmptyStateManager-new}{}}}
 \subsection{Method \code{new()}}{
+Creates a new empty state manager object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$new(
   id,
@@ -33,24 +62,47 @@ EmptyStateManager class
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{id}}{id}
+\item{\code{id}}{id of element which should be covered with \code{html_content}}
 
-\item{\code{html_content}}{html_content}
+\item{\code{html_content}}{Content for empty state.
+Defaults to \code{default_empty_state_component()}}
 
-\item{\code{color}}{color
-Returns the current visibility state of the empty state UI
-Show empty state
-Hide empty state}
+\item{\code{color}}{Background color of empty state content.
+Defaults to \code{NULL}}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A new \code{EmptyStateManager} R6 class object.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{empty_state_manager <- EmptyStateManager$new(id = "my_table")
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-is_empty_state_show"></a>}}
 \if{latex}{\out{\hypertarget{method-EmptyStateManager-is_empty_state_show}{}}}
 \subsection{Method \code{is_empty_state_show()}}{
+Returns the current visibility state of the empty state UI.
+Defaults to \code{FALSE}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$is_empty_state_show()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+boolean, \code{TRUE}/\code{FALSE}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{empty_state_manager$is_empty_state_show()
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
@@ -58,8 +110,20 @@ Hide empty state}
 \if{html}{\out{<a id="method-EmptyStateManager-show"></a>}}
 \if{latex}{\out{\hypertarget{method-EmptyStateManager-show}{}}}
 \subsection{Method \code{show()}}{
+Show empty state component.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$show()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Nothing, it changes state of empty state
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{empty_state_manager$show()}
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
@@ -67,8 +131,20 @@ Hide empty state}
 \if{html}{\out{<a id="method-EmptyStateManager-hide"></a>}}
 \if{latex}{\out{\hypertarget{method-EmptyStateManager-hide}{}}}
 \subsection{Method \code{hide()}}{
+Hides empty state component.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$hide()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Nothing, it changes state of empty state
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{empty_state_manager$hide()}
+}
+\if{html}{\out{</div>}}
+
 }
 
 }

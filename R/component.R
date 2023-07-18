@@ -1,12 +1,14 @@
 #' Create an empty state component
 #'
-#' @param content an HTML, tag object to render
-#' @param title a character, main text to describe empty state content
-#' @param subtitle a character, supporting details about the empty state;
-#' defaults to `NULL`
+#' @description
+#' Function to create a custom empty state component.
+#'
+#' @param content An HTML tag object used to render & provides main content for the empty state.
+#' @param title A character string representing the main text that describes the empty state content.
+#' @param subtitle A character string providing supporting details about the empty state.
+#' Defaults to `NULL`
 #'
 #' @return a shiny.tag.
-#' @export
 #'
 #' @details
 #' `content` works best with [fontawesome::fa()] and [bsicons::bs_icon()].
@@ -14,9 +16,7 @@
 #' html dependencies in the ui, i.e. calling [fontawesome::fa_html_dependency()]
 #' to use icons from FontAwesome.Glyphicon does not need any html dependency.
 #'
-#'
 #' @examples
-#'
 #' library(shiny.emptystate)
 #'
 #' if (interactive()) {
@@ -35,18 +35,28 @@
 #'     subtitle = "Please provide valid inputs to generate content."
 #'   )
 #' }
+#'
+#' @importFrom htmltools tags
+#' @export
 empty_state_component <- function(content, title, subtitle = NULL) {
-  htmltools::tags$div(
+  tags$div(
     class = "empty-state-component",
-    htmltools::tags$div(class = "empty-state-card", content),
-    htmltools::tags$span(class = "empty-state-title", title),
-    htmltools::tags$span(class = "empty-state-subtitle", subtitle)
+    tags$div(class = "empty-state-card", content),
+    tags$span(class = "empty-state-title", title),
+    tags$span(class = "empty-state-subtitle", subtitle)
   )
 }
 
+#' Default empty state component
+#'
+#' @description
+#' Default empty state component, used when user doesn't provide
+#' any value while initializing new EmptyStateManager object.
+#' @returns a shiny.tag.
+#' @importFrom fontawesome fa
 default_empty_state_component <- function() {
   empty_state_component(
-    fontawesome::fa(
+    fa(
       name = "clipboard-question",
       height = "10rem"
     ),
