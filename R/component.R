@@ -3,10 +3,12 @@
 #' @description
 #' Function to create a custom empty state component.
 #'
-#' @param content An HTML tag object used to render & provides main content for the empty state.
-#' @param title A character string representing the main text that describes the empty state content.
-#' @param subtitle A character string providing supporting details about the empty state.
-#' Defaults to `NULL`
+#' @param content An HTML tag object used to render & provides
+#' main content for the empty state.
+#' @param title A character string representing the main text
+#' that describes the empty state content.
+#' @param subtitle A character string providing supporting
+#' details about the empty state. Defaults to `NULL`
 #'
 #' @return a shiny.tag.
 #'

@@ -7,7 +7,7 @@
 Create an EmptyStateManager to then show or hide content.
 }
 \details{
-Create an object to show an empty state content on selected id specified by \code{id} param.
+Create an object to show an empty state content on selected id specified by \code{id} parameter.
 Then \code{show} or \code{hide} or use \code{is_empty_state_show} to check the status.
 }
 \examples{
