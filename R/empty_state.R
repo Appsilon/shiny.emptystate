@@ -32,11 +32,54 @@ use_empty_state <- function() {
 
 #' EmptyStateManager R6 class
 #' @description
-#' Create an EmptyStateManager to then show or hide content.
+#' Creates an EmptyStateManager to then show or hide content.
 #'
 #' @details
-#' Create an object to show an empty state content on selected id specified by \code{id} parameter.
+#' Creates an object to show an empty state content on selected id specified by \code{id} parameter.
 #' Then \code{show} or \code{hide} or use \code{is_empty_state_show} to check the status.
+#'
+#' @examples
+#' library(shiny)
+#' library(shiny.emptystate)
+#' library(fontawesome)
+#'
+#' ui <-
+#'   fluidPage(
+#'     use_empty_state(),
+#'     shiny::actionButton("show", "Show empty state!"),
+#'     shiny::actionButton("hide", "Hide empty state!"),
+#'     shiny::tableOutput("my_table")
+#'   )
+#' server <-
+#'   function(input, output) {
+#'     # Creating a custom empty state component
+#'     empty_state_content <- empty_state_component(
+#'       content = fa("eye-slash", height = "10rem", fill = "#808000"),
+#'       title = "Hide empty state to see table",
+#'       subtitle = "This empty state uses a FontAwesome icon."
+#'     )
+#'     # Initialize a new empty state manager object
+#'     manager_object <-
+#'       EmptyStateManager$new(
+#'         id = "my_table",
+#'         html_content = empty_state_content)
+#'     observeEvent(input$show, {
+#'       # Show empty state using `manager_object$show()`
+#'       manager_object$show()
+#'     })
+#'     observeEvent(input$hide, {
+#'       # Checking empty state visibility status using
+#'       # `manager_object$is_empty_state_show()`
+#'       if (manager_object$is_empty_state_show()) {
+#'         # Hide empty state using `manager_object$hide()`
+#'         manager_object$hide()
+#'       }
+#'     })
+#'     output$my_table <- renderTable(mtcars)
+#'   }
+#' if(interactive()) {
+#'   shinyApp(ui = ui, server = server)
+#' }
 #'
 #' @importFrom R6 R6Class
 #' @importFrom shiny getDefaultReactiveDomain
@@ -53,8 +96,6 @@ EmptyStateManager <- R6Class( # nolint: object_name_linter
     #' Defaults to `default_empty_state_component()`
     #' @param color Background color of empty state content.
     #' Defaults to `NULL`
-    #' @examples
-    #' empty_state_manager <- EmptyStateManager$new(id = "my_table")
     #' @return A new `EmptyStateManager` R6 class object.
     initialize = function(id, html_content = default_empty_state_component(), color = NULL) {
       private$.id <- id
@@ -66,8 +107,6 @@ EmptyStateManager <- R6Class( # nolint: object_name_linter
     #' Returns the current visibility state of the empty state UI.
     #' Defaults to `FALSE`
     #' @return boolean, `TRUE`/`FALSE`
-    #' @examples
-    #' empty_state_manager$is_empty_state_show()
     is_empty_state_show = function() {
       private$empty_state_shown
     },
@@ -75,8 +114,6 @@ EmptyStateManager <- R6Class( # nolint: object_name_linter
     #' @description
     #' Show empty state component.
     #' @return Nothing, it changes state of empty state
-    #' @examples
-    #' \dontrun{empty_state_manager$show()}
     show = function() {
       session <- private$get_session()
 
@@ -94,8 +131,6 @@ EmptyStateManager <- R6Class( # nolint: object_name_linter
     #' @description
     #' Hides empty state component.
     #' @return Nothing, it changes state of empty state
-    #' @examples
-    #' \dontrun{empty_state_manager$hide()}
     hide = function() {
       session <- private$get_session()
 

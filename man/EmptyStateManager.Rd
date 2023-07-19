@@ -4,37 +4,55 @@
 \alias{EmptyStateManager}
 \title{EmptyStateManager R6 class}
 \description{
-Create an EmptyStateManager to then show or hide content.
+Creates an EmptyStateManager to then show or hide content.
 }
 \details{
-Create an object to show an empty state content on selected id specified by \code{id} parameter.
+Creates an object to show an empty state content on selected id specified by \code{id} parameter.
 Then \code{show} or \code{hide} or use \code{is_empty_state_show} to check the status.
 }
 \examples{
+library(shiny)
+library(shiny.emptystate)
+library(fontawesome)
 
-## ------------------------------------------------
-## Method `EmptyStateManager$new`
-## ------------------------------------------------
+ui <-
+  fluidPage(
+    use_empty_state(),
+    shiny::actionButton("show", "Show empty state!"),
+    shiny::actionButton("hide", "Hide empty state!"),
+    shiny::tableOutput("my_table")
+  )
+server <-
+  function(input, output) {
+    # Creating a custom empty state component
+    empty_state_content <- empty_state_component(
+      content = fa("eye-slash", height = "10rem", fill = "#808000"),
+      title = "Hide empty state to see table",
+      subtitle = "This empty state uses a FontAwesome icon."
+    )
+    # Initialize a new empty state manager object
+    manager_object <-
+      EmptyStateManager$new(
+        id = "my_table",
+        html_content = empty_state_content)
+    observeEvent(input$show, {
+      # Show empty state using `manager_object$show()`
+      manager_object$show()
+    })
+    observeEvent(input$hide, {
+      # Checking empty state visibility status using
+      # `manager_object$is_empty_state_show()`
+      if (manager_object$is_empty_state_show()) {
+        # Hide empty state using `manager_object$hide()`
+        manager_object$hide()
+      }
+    })
+    output$my_table <- renderTable(mtcars)
+  }
+if(interactive()) {
+  shinyApp(ui = ui, server = server)
+}
 
-empty_state_manager <- EmptyStateManager$new(id = "my_table")
-
-## ------------------------------------------------
-## Method `EmptyStateManager$is_empty_state_show`
-## ------------------------------------------------
-
-empty_state_manager$is_empty_state_show()
-
-## ------------------------------------------------
-## Method `EmptyStateManager$show`
-## ------------------------------------------------
-
-\dontrun{empty_state_manager$show()}
-
-## ------------------------------------------------
-## Method `EmptyStateManager$hide`
-## ------------------------------------------------
-
-\dontrun{empty_state_manager$hide()}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -75,14 +93,6 @@ Defaults to \code{NULL}}
 \subsection{Returns}{
 A new \code{EmptyStateManager} R6 class object.
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{empty_state_manager <- EmptyStateManager$new(id = "my_table")
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-is_empty_state_show"></a>}}
@@ -97,14 +107,6 @@ Defaults to \code{FALSE}
 \subsection{Returns}{
 boolean, \code{TRUE}/\code{FALSE}
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{empty_state_manager$is_empty_state_show()
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-show"></a>}}
@@ -118,14 +120,6 @@ Show empty state component.
 \subsection{Returns}{
 Nothing, it changes state of empty state
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{empty_state_manager$show()}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-hide"></a>}}
@@ -139,14 +133,6 @@ Hides empty state component.
 \subsection{Returns}{
 Nothing, it changes state of empty state
 }
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{empty_state_manager$hide()}
-}
-\if{html}{\out{</div>}}
-
-}
-
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-clone"></a>}}

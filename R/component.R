@@ -3,14 +3,14 @@
 #' @description
 #' Function to create a custom empty state component.
 #'
-#' @param content An HTML tag object used to render & provides
-#' main content for the empty state.
+#' @param content An HTML tag object used to render and provide
+#' the main content for the empty state.
 #' @param title A character string representing the main text
 #' that describes the empty state content.
 #' @param subtitle A character string providing supporting
 #' details about the empty state. Defaults to `NULL`
 #'
-#' @return a shiny.tag.
+#' @return a shiny.tag
 #'
 #' @details
 #' `content` works best with [fontawesome::fa()] and [bsicons::bs_icon()].

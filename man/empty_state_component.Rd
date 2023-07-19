@@ -7,8 +7,8 @@
 empty_state_component(content, title, subtitle = NULL)
 }
 \arguments{
-\item{content}{An HTML tag object used to render & provides
-main content for the empty state.}
+\item{content}{An HTML tag object used to render and provide
+the main content for the empty state.}
 
 \item{title}{A character string representing the main text
 that describes the empty state content.}
@@ -17,7 +17,7 @@ that describes the empty state content.}
 details about the empty state. Defaults to \code{NULL}}
 }
 \value{
-a shiny.tag.
+a shiny.tag
 }
 \description{
 Function to create a custom empty state component.
