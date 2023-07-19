@@ -2,11 +2,60 @@
 % Please edit documentation in R/empty_state.R
 \name{EmptyStateManager}
 \alias{EmptyStateManager}
-\title{EmptyStateManager class}
+\title{EmptyStateManager R6 class}
+\value{
+EmptyStateManager R6 class
+}
 \description{
-EmptyStateManager class
+Creates an EmptyStateManager to then show or hide content.
+}
+\details{
+Creates an object to show an empty state content on selected id specified by \code{id} parameter.
+Then \code{show} or \code{hide} or use \code{is_empty_state_show} to check the status.
+}
+\examples{
+library(shiny)
+library(shiny.emptystate)
+library(fontawesome)
 
-EmptyStateManager class
+ui <- fluidPage(
+  use_empty_state(),
+  actionButton("show", "Show empty state!"),
+  actionButton("hide", "Hide empty state!"),
+  tableOutput("my_table")
+)
+
+server <- function(input, output) {
+  # Creating a custom empty state component
+  empty_state_content <- empty_state_component(
+    content = fa("eye-slash", height = "10rem", fill = "#808000"),
+    title = "Hide empty state to see table",
+    subtitle = "This empty state uses a FontAwesome icon."
+  )
+
+  # Initialize a new empty state manager object
+  manager_object <- EmptyStateManager$new(
+    id = "my_table",
+    html_content = empty_state_content
+  )
+
+  observeEvent(input$show, {
+    # Show empty state
+    manager_object$show()
+  })
+
+  observeEvent(input$hide, {
+    # Hide empty state
+    manager_object$hide()
+  })
+
+  output$my_table <- renderTable(mtcars)
+}
+
+if (interactive()) {
+  shinyApp(ui = ui, server = server)
+}
+
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -22,6 +71,7 @@ EmptyStateManager class
 \if{html}{\out{<a id="method-EmptyStateManager-new"></a>}}
 \if{latex}{\out{\hypertarget{method-EmptyStateManager-new}{}}}
 \subsection{Method \code{new()}}{
+Creates a new empty state manager object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$new(
   id,
@@ -33,44 +83,59 @@ EmptyStateManager class
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{id}}{id}
+\item{\code{id}}{id of element which should be covered with \code{html_content}}
 
-\item{\code{html_content}}{html_content}
+\item{\code{html_content}}{Content for empty state.
+Defaults to \code{default_empty_state_component()}}
 
-\item{\code{color}}{color
-Returns the current visibility state of the empty state UI
-Show empty state
-Hide empty state}
+\item{\code{color}}{Background color of empty state content.
+Defaults to \code{NULL}}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A new \code{EmptyStateManager} R6 class object.
 }
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-is_empty_state_show"></a>}}
 \if{latex}{\out{\hypertarget{method-EmptyStateManager-is_empty_state_show}{}}}
 \subsection{Method \code{is_empty_state_show()}}{
+Returns the current visibility state of the empty state UI.
+Defaults to \code{FALSE}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$is_empty_state_show()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+boolean, \code{TRUE}/\code{FALSE}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-show"></a>}}
 \if{latex}{\out{\hypertarget{method-EmptyStateManager-show}{}}}
 \subsection{Method \code{show()}}{
+Show empty state component.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$show()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+Nothing, it changes state of empty state
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-hide"></a>}}
 \if{latex}{\out{\hypertarget{method-EmptyStateManager-hide}{}}}
 \subsection{Method \code{hide()}}{
+Hides empty state component.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$hide()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+Nothing, it changes state of empty state
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-EmptyStateManager-clone"></a>}}
