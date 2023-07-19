@@ -3,6 +3,9 @@
 \name{EmptyStateManager}
 \alias{EmptyStateManager}
 \title{EmptyStateManager R6 class}
+\value{
+EmptyStateManager R6 class
+}
 \description{
 Creates an EmptyStateManager to then show or hide content.
 }
@@ -18,9 +21,9 @@ library(fontawesome)
 ui <-
   fluidPage(
     use_empty_state(),
-    shiny::actionButton("show", "Show empty state!"),
-    shiny::actionButton("hide", "Hide empty state!"),
-    shiny::tableOutput("my_table")
+    actionButton("show", "Show empty state!"),
+    actionButton("hide", "Hide empty state!"),
+    tableOutput("my_table")
   )
 server <-
   function(input, output) {
@@ -36,16 +39,12 @@ server <-
         id = "my_table",
         html_content = empty_state_content)
     observeEvent(input$show, {
-      # Show empty state using `manager_object$show()`
+      # Show empty state
       manager_object$show()
     })
     observeEvent(input$hide, {
-      # Checking empty state visibility status using
-      # `manager_object$is_empty_state_show()`
-      if (manager_object$is_empty_state_show()) {
-        # Hide empty state using `manager_object$hide()`
-        manager_object$hide()
-      }
+      # Hide empty state
+      manager_object$hide()
     })
     output$my_table <- renderTable(mtcars)
   }
