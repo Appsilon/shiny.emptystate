@@ -38,6 +38,8 @@ use_empty_state <- function() {
 #' Creates an object to show an empty state content on selected id specified by \code{id} parameter.
 #' Then \code{show} or \code{hide} or use \code{is_empty_state_show} to check the status.
 #'
+#' @return EmptyStateManager R6 class
+#'
 #' @examples
 #' library(shiny)
 #' library(shiny.emptystate)
@@ -46,9 +48,9 @@ use_empty_state <- function() {
 #' ui <-
 #'   fluidPage(
 #'     use_empty_state(),
-#'     shiny::actionButton("show", "Show empty state!"),
-#'     shiny::actionButton("hide", "Hide empty state!"),
-#'     shiny::tableOutput("my_table")
+#'     actionButton("show", "Show empty state!"),
+#'     actionButton("hide", "Hide empty state!"),
+#'     tableOutput("my_table")
 #'   )
 #' server <-
 #'   function(input, output) {
@@ -64,16 +66,12 @@ use_empty_state <- function() {
 #'         id = "my_table",
 #'         html_content = empty_state_content)
 #'     observeEvent(input$show, {
-#'       # Show empty state using `manager_object$show()`
+#'       # Show empty state
 #'       manager_object$show()
 #'     })
 #'     observeEvent(input$hide, {
-#'       # Checking empty state visibility status using
-#'       # `manager_object$is_empty_state_show()`
-#'       if (manager_object$is_empty_state_show()) {
-#'         # Hide empty state using `manager_object$hide()`
-#'         manager_object$hide()
-#'       }
+#'       # Hide empty state
+#'       manager_object$hide()
 #'     })
 #'     output$my_table <- renderTable(mtcars)
 #'   }
