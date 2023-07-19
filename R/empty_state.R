@@ -45,37 +45,41 @@ use_empty_state <- function() {
 #' library(shiny.emptystate)
 #' library(fontawesome)
 #'
-#' ui <-
-#'   fluidPage(
-#'     use_empty_state(),
-#'     actionButton("show", "Show empty state!"),
-#'     actionButton("hide", "Hide empty state!"),
-#'     tableOutput("my_table")
+#' ui <- fluidPage(
+#'   use_empty_state(),
+#'   actionButton("show", "Show empty state!"),
+#'   actionButton("hide", "Hide empty state!"),
+#'   tableOutput("my_table")
+#' )
+#'
+#' server <- function(input, output) {
+#'   # Creating a custom empty state component
+#'   empty_state_content <- empty_state_component(
+#'     content = fa("eye-slash", height = "10rem", fill = "#808000"),
+#'     title = "Hide empty state to see table",
+#'     subtitle = "This empty state uses a FontAwesome icon."
 #'   )
-#' server <-
-#'   function(input, output) {
-#'     # Creating a custom empty state component
-#'     empty_state_content <- empty_state_component(
-#'       content = fa("eye-slash", height = "10rem", fill = "#808000"),
-#'       title = "Hide empty state to see table",
-#'       subtitle = "This empty state uses a FontAwesome icon."
-#'     )
-#'     # Initialize a new empty state manager object
-#'     manager_object <-
-#'       EmptyStateManager$new(
-#'         id = "my_table",
-#'         html_content = empty_state_content)
-#'     observeEvent(input$show, {
-#'       # Show empty state
-#'       manager_object$show()
-#'     })
-#'     observeEvent(input$hide, {
-#'       # Hide empty state
-#'       manager_object$hide()
-#'     })
-#'     output$my_table <- renderTable(mtcars)
-#'   }
-#' if(interactive()) {
+#'
+#'   # Initialize a new empty state manager object
+#'   manager_object <- EmptyStateManager$new(
+#'     id = "my_table",
+#'     html_content = empty_state_content
+#'   )
+#'
+#'   observeEvent(input$show, {
+#'     # Show empty state
+#'     manager_object$show()
+#'   })
+#'
+#'   observeEvent(input$hide, {
+#'     # Hide empty state
+#'     manager_object$hide()
+#'   })
+#'
+#'   output$my_table <- renderTable(mtcars)
+#' }
+#'
+#' if (interactive()) {
 #'   shinyApp(ui = ui, server = server)
 #' }
 #'
