@@ -72,7 +72,7 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
-For more examples of empty state components, please see this [demo](https://connect.appsilon.com/shiny-emptysate-demo/).
+For more examples of empty state components, please see this [demo](https://connect.appsilon.com/shiny-emptystate-demo/).
 
 ## How to contribute?
 
