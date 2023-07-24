@@ -15,7 +15,7 @@ describe("EmptyStateManager", {
     expect_equal(
       test_class$.__enclos_env__$private$.html_content,
       as.character(default_empty_state_component())
-      )
+    )
   })
 
   it("should contain passed color", {
@@ -39,7 +39,7 @@ describe("EmptyStateManager", {
     expect_equal(
       app$get_html(selector = ".empty-state-content"),
       as.character(expected_div)
-      )
+    )
     app$stop()
   })
 
@@ -56,7 +56,6 @@ describe("EmptyStateManager", {
     expect_null(app$get_html(selector = ".empty-state-content"))
     app$stop()
   })
-
 })
 
 describe("use_empty_state()", {
@@ -64,7 +63,7 @@ describe("use_empty_state()", {
   src_files <- list(
     "emptystate.css",
     "emptystate.js"
-    )
+  )
 
   it("should add source files properly", {
     expect <- paste0(
