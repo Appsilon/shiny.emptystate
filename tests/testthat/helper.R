@@ -26,3 +26,46 @@ test_app <- function() {
     }
   )
 }
+
+test_slider_app <- function() {
+  shiny::shinyApp(
+    ui = bslib::page(
+      theme = bslib::bs_theme(version = 5),
+      use_empty_state(),
+      shiny::actionButton(
+        "toggle_pannel",
+        "Toggle panel",
+        class = "btn btn-primary",
+        onClick = "$('#container1').toggle(anim = 'slide', function(){shiny_emptystate_updatePosition('container2')});"
+      ),
+      shiny::div(
+        style = "width: 300px",
+        class = "d-flex flex-column gap-5",
+        shiny::div(
+          id = "container1",
+          shiny::div(
+            shiny::h1("Card 1"),
+            "Card content"
+          )
+        ),
+        shiny::div(
+          id = "container2",
+          shiny::div(
+            shiny::h1("Card 2"),
+            "Card content"
+          )
+        )
+      )
+    ),
+    server = function(input, output) {
+      empty_state_content <- shiny::div(
+        "This is example empty state content"
+      )
+      empty_state_manager <- EmptyStateManager$new(
+        id = "container2",
+        html_content = empty_state_content
+      )
+      empty_state_manager$show()
+    }
+  )
+}
