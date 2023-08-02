@@ -29,8 +29,7 @@ test_app <- function() {
 
 test_slider_app <- function() {
   shiny::shinyApp(
-    ui = bslib::page(
-      theme = bslib::bs_theme(version = 5),
+    ui = shiny::fillPage(
       use_empty_state(),
       shiny::actionButton(
         "toggle_pannel",
