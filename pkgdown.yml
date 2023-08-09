@@ -3,7 +3,7 @@ pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
   use-undraw-drawkit-image: use-undraw-drawkit-image.html
-last_built: 2023-07-24T11:27Z
+last_built: 2023-08-09T08:47Z
 urls:
   reference: https://appsilon.github.io/shiny.emptystate/reference
   article: https://appsilon.github.io/shiny.emptystate/articles
