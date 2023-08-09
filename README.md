@@ -1,4 +1,4 @@
-# shiny.emptystate
+# shiny.emptystate <a href="https://appsilon.github.io/shiny.emptystate/"><img src="man/figures/logo.png" align="right" alt="shiny.emptystate logo" style="height: 140px;"></a>
 
 > _Empty state components for Shiny._
 
