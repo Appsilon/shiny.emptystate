@@ -1,10 +1,17 @@
 Package: shiny.emptystate
-Title: Empty State Components for Shiny
-Version: 0.0.0.9002
+Title: Empty State Components for 'Shiny'
+Version: 0.1.0
 Authors@R:
-    person("Ryszard", "Szymański", , "ryszard@appsilon.com", role = c("aut", "cre"))
-Description: Empty state components for Shiny.
-License: MIT + file LICENSE
+    c(
+        person("Ryszard", "Szymański", role = c("aut", "cre"), email = "opensource+ryszard@appsilon.com"),
+        person("Recle", "Vibal", role = "aut", email = "recle.vibal@appsilon.com"),
+        person("Harsh", "Verma", role = c("ctb"), email = "harsh.verma@appsilon.com"),
+        person("Vedha", "Viyash", role = c("ctb"), email = "vedha.viyash@appsilon.com")
+    )
+Description: Make it easy to handle empty states in your 'Shiny' applications.
+URL: https://appsilon.github.io/shiny.emptystate/, https://github.com/Appsilon/shiny.emptystate
+BugReports: https://github.com/Appsilon/shiny.emptystate/issues
+License: LGPL-3
 Imports:
     fontawesome,
     htmltools,
