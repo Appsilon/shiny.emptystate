@@ -8,7 +8,11 @@ Authors@R:
         person("Harsh", "Verma", role = c("ctb"), email = "harsh.verma@appsilon.com"),
         person("Vedha", "Viyash", role = c("ctb"), email = "vedha.viyash@appsilon.com")
     )
-Description: Make it easy to handle empty states in your 'Shiny' applications.
+Description:
+    'shiny.emptystate' offers a comprehensive solution for managing 'empty states' in 'Shiny' applications.
+    It provides tools to create both default and customizable components for scenarios where
+    data is absent or doesn't match user-defined filters. The package prioritizes user experience,
+    ensuring clarity and consistency even when data is not available to display.
 URL: https://appsilon.github.io/shiny.emptystate/, https://github.com/Appsilon/shiny.emptystate
 BugReports: https://github.com/Appsilon/shiny.emptystate/issues
 License: LGPL-3
