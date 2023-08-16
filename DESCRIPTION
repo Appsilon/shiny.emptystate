@@ -9,7 +9,7 @@ Authors@R:
         person("Vedha", "Viyash", role = c("ctb"), email = "vedha.viyash@appsilon.com")
     )
 Description:
-    This package offers a comprehensive solution for managing 'empty states' in 'Shiny' applications.
+    Offers a comprehensive solution for managing 'empty states' in 'Shiny' applications.
     It provides tools to create both default and customizable components for scenarios where
     data is absent or doesn't match user-defined filters. The package prioritizes user experience,
     ensuring clarity and consistency even when data is not available to display.
