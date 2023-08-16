@@ -1,5 +1,11 @@
 ## Resubmission
 
+> The Description field should not start with the package name, 'This package' or similar.
+
+We have updated the description.
+
+## Resubmission
+
 > If there are references describing the methods in your package, please
 add these in the Description field of your DESCRIPTION file in the form
 authors (year) <doi:...>
