@@ -10,3 +10,4 @@ pkgdown
 ^LICENSE\.md$
 vignettes
 _\.new\.png$
+^cran-comments\.md$

@@ -1,8 +1,9 @@
-# shiny.emptystate
+# shiny.emptystate <a href="https://appsilon.github.io/shiny.emptystate/"><img src="man/figures/logo.png" align="right" alt="shiny.emptystate logo" style="height: 140px;"></a>
 
 > _Empty state components for Shiny._
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/shiny.emptystate)](https://cran.r-project.org/package=shiny.emptystate)
 ![R-CMD-check](https://github.com/Appsilon/shiny.emptystate/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/gh/Appsilon/shiny.emptystate/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Appsilon/shiny.emptystate/)
 <!-- badges: end -->
@@ -20,6 +21,14 @@ In the context of dashboards you can encounter empty states when:
 The goal of this package is to make it easy to handle empty states in your shiny applications.
 
 ## How to install?
+
+Stable version:
+
+```r
+install.packages("shiny.emptystate")
+```
+
+Development version:
 
 ```r
 remotes::install_github("Appsilon/shiny.emptystate")

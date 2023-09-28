@@ -32,6 +32,7 @@ describe("EmptyStateManager", {
   })
 
   it("checks the empty state component is visible when triggered", {
+    skip_on_cran()
     expected_div <-
       "<div class=\"empty-state-content\"><div class=\"myDiv\"></div></div>"
     app <- shinytest2::AppDriver$new(test_app(), name = "test")
@@ -44,12 +45,14 @@ describe("EmptyStateManager", {
   })
 
   it("checks the empty state component is hidden when not triggered", {
+    skip_on_cran()
     app <- shinytest2::AppDriver$new(test_app(), name = "test")
     expect_null(app$get_html(selector = ".empty-state-content"))
     app$stop()
   })
 
   it("checks the empty state component is hidden when triggered", {
+    skip_on_cran()
     app <- shinytest2::AppDriver$new(test_app(), name = "test")
     app$click("show")
     app$click("hide")
