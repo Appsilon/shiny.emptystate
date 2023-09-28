@@ -35,7 +35,7 @@ test_slider_app <- function() {
         "toggle_pannel",
         "Toggle panel",
         class = "btn btn-primary",
-        onClick = "$('#container1').toggle(anim = 'slide',
+        onClick = "$('#container1').toggle(0,
         function(){shiny_emptystate_updatePosition('container2')});"
       ),
       shiny::div(

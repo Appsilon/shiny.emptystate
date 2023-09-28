@@ -1,0 +1,69 @@
+---
+title: "How to use triggered animations"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{How to use triggered animations}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+`shiny.emptystate` is capable of being used for dynamic positioning trigger animations. This is specially interesting when we have UIs that change position and we want to keep the `emptystate` in the appropriate tag
+
+**Note:** This solution is only available for instant positioning animation.
+
+# Animation example
+
+The example below showcases the example of using a dynamic trigger slider that changes.
+
+The function `shiny_emptystate_updatePosition` updates the position of the #container1 after being re-positioned
+
+``` r
+library(shiny)
+library(shiny.emptystate)
+
+ui <- shiny::fillPage(
+  use_empty_state(),
+  shiny::actionButton(
+    "toggle_pannel",
+    "Toggle panel",
+    class = "btn btn-primary",
+    onClick = "$('#container1').toggle(0,
+    function(){shiny_emptystate_updatePosition('container2')});"
+  ),
+  shiny::div(
+    style = "width: 300px",
+    class = "d-flex flex-column gap-5",
+    shiny::div(
+      id = "container1",
+      shiny::div(
+        shiny::h1("Card 1"),
+        "Card content"
+      )
+    ),
+    shiny::div(
+      id = "container2",
+      shiny::div(
+        shiny::h1("Card 2"),
+        "Card content"
+      )
+    )
+  )
+)
+
+server = function(input, output) {
+  empty_state_content <- shiny::div(
+    "This is example empty state content"
+  )
+  empty_state_manager <- EmptyStateManager$new(
+    id = "container2",
+    html_content = empty_state_content
+  )
+  empty_state_manager$show()
+}
+
+shinyApp(ui, server)
+```
+
+![](images/dynamic_emptystate.gif)
