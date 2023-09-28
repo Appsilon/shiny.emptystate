@@ -66,4 +66,4 @@ server = function(input, output) {
 shinyApp(ui, server)
 ```
 
-![](images/dynamic_emptystate.gif)
+![](files/dynamic_emptystate.gif)
