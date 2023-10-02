@@ -62,9 +62,10 @@ describe("EmptyStateManager", {
 
   it("checks the empty state component follows slider from id", {
     app <- shinytest2::AppDriver$new(test_slider_app(), name = "slide_tag")
-    app$expect_values()
+    position_1 <- app$get_html(selector = "#container2")
     app$click("toggle_pannel")
-    app$expect_values()
+    position_2 <- app$get_html(selector = "#container2")
+    expect_false(position_1 == position_2)
     app$stop()
   })
 })
