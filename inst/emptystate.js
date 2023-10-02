@@ -75,6 +75,18 @@ function hideEmptyState(message) {
   resizeObserver.unobserve(elementToReplace);
 }
 
+function shiny_emptystate_updatePosition(id){
+  const elementWithEmptyState = findElementById(id);
+  const emptyStateContainer = elementWithEmptyState.querySelector(".empty-state-container");
+
+  const parentElement = emptyStateContainer.parentElement;
+  emptyStateContainer.style.height = parentElement.offsetHeight + "px";
+  emptyStateContainer.style.width = parentElement.offsetWidth + "px";
+  emptyStateContainer.style.left = parentElement.offsetLeft + "px";
+  emptyStateContainer.style.top = parentElement.offsetTop + "px";
+}
+
+
 $(function() {
   Shiny.addCustomMessageHandler("showEmptyState", showEmptyState)
   Shiny.addCustomMessageHandler("hideEmptyState", hideEmptyState)
