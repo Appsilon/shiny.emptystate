@@ -1,6 +1,6 @@
 Package: shiny.emptystate
 Title: Empty State Components for 'Shiny'
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R:
     c(
         person("Ryszard", "Szymański", role = c("aut", "cre"), email = "opensource+ryszard@appsilon.com"),

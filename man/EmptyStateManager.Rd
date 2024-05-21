@@ -76,7 +76,8 @@ Creates a new empty state manager object.
 \if{html}{\out{<div class="r">}}\preformatted{EmptyStateManager$new(
   id,
   html_content = default_empty_state_component(),
-  color = NULL
+  color = NULL,
+  z_index = 9999
 )}\if{html}{\out{</div>}}
 }
 
@@ -90,6 +91,9 @@ Defaults to \code{default_empty_state_component()}}
 
 \item{\code{color}}{Background color of empty state content.
 Defaults to \code{NULL}}
+
+\item{\code{z_index}}{The stack level for the empty state container.
+Defaults to \code{9999}}
 }
 \if{html}{\out{</div>}}
 }
