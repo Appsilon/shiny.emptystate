@@ -98,11 +98,18 @@ EmptyStateManager <- R6Class( # nolint: object_name_linter
     #' Defaults to `default_empty_state_component()`
     #' @param color Background color of empty state content.
     #' Defaults to `NULL`
+    #' @param z_index The stack level for the empty state container.
+    #' Defaults to `9999`
     #' @return A new `EmptyStateManager` R6 class object.
-    initialize = function(id, html_content = default_empty_state_component(), color = NULL) {
+    initialize = function(
+        id,
+        html_content = default_empty_state_component(),
+        color = NULL,
+        z_index = 9999) {
       private$.id <- id
       private$.html_content <- private$process_html(html_content)
       private$.color <- color
+      private$.z_index <- z_index
     },
 
     #' @description
@@ -152,6 +159,7 @@ EmptyStateManager <- R6Class( # nolint: object_name_linter
     .id = NA,
     .html_content = NA,
     .color = NA,
+    .z_index = NA,
     empty_state_shown = FALSE,
     get_session = function() {
       getDefaultReactiveDomain()
@@ -160,7 +168,8 @@ EmptyStateManager <- R6Class( # nolint: object_name_linter
       list(
         id = private$.id,
         html_content = private$.html_content,
-        color = private$.color
+        color = private$.color,
+        z_index = private$.z_index
       )
     },
     create_hide_message = function() {
