@@ -20,7 +20,7 @@ function createEmptyStateContentElement(htmlContent) {
   return emptyStateContentElement;
 }
 
-function createEmptyStateContainer(elementToReplace) {
+function createEmptyStateContainer(elementToReplace, zIndex) {
   const emptyStateContainer = document.createElement("div");
 
   emptyStateContainer.style.position = "absolute";
@@ -29,6 +29,7 @@ function createEmptyStateContainer(elementToReplace) {
   emptyStateContainer.style.width = elementToReplace.offsetWidth + "px";
   emptyStateContainer.style.left = elementToReplace.offsetLeft + "px";
   emptyStateContainer.style.top = elementToReplace.offsetTop + "px";
+  emptyStateContainer.style.zIndex = zIndex;
 
   emptyStateContainer.classList.add("empty-state-container");
 
@@ -48,13 +49,14 @@ function findElementById(elementId) {
 function showEmptyState(message) {
   const elementId = message.id;
   const emptyStateContent = message.html_content;
+  const zIndex = message.z_index
 
   const white = "#FFFFFF"
   const backgroundColor = (message.color === null) ? white : message.color;
 
   elementToReplace = findElementById(elementId);
 
-  const emptyStateContainer = createEmptyStateContainer(elementToReplace);
+  const emptyStateContainer = createEmptyStateContainer(elementToReplace, zIndex);
   const emptyStateContentElement = createEmptyStateContentElement(emptyStateContent);
   emptyStateContainer.appendChild(emptyStateContentElement);
 
