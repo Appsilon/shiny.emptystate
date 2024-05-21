@@ -59,6 +59,66 @@ describe("EmptyStateManager", {
     expect_null(app$get_html(selector = ".empty-state-content"))
     app$stop()
   })
+
+  it("uses a default z-index for its container when not specified", {
+    skip_on_cran()
+    app <- shinytest2::AppDriver$new(test_app(), name = "test")
+    app$click("show")
+
+    js_get_z_index <- "function getZIndex() {
+        const container = document.querySelector('.empty-state-container');
+      return window.getComputedStyle(container).zIndex;
+      };
+
+      getZIndex();"
+
+    expect_equal(app$get_js(js_get_z_index), "9999")
+    app$stop()
+  })
+
+  it("can use an arbitrary z-index value for its container", {
+    skip_on_cran()
+
+    test_app <- function() {
+      shiny::shinyApp(
+        ui = shiny::fluidPage(
+          use_empty_state(),
+          shiny::actionButton("show", "Show empty state!"),
+          shiny::actionButton("hide", "Hide empty state!"),
+          shiny::tableOutput("my_table")
+        ),
+        server = function(input, output) {
+          empty_state_content <- htmltools::div(class = "myDiv")
+          empty_state_manager <- EmptyStateManager$new(
+            id = "my_table",
+            html_content = empty_state_content,
+            z_index = 3
+          )
+          shiny::observeEvent(input$show, {
+            empty_state_manager$show()
+          })
+          shiny::observeEvent(input$hide, {
+            empty_state_manager$hide()
+          })
+          output$my_table <- shiny::renderTable(data.frame(NA))
+        }
+      )
+    }
+
+
+    app <- shinytest2::AppDriver$new(test_app(), name = "test")
+    app$click("show")
+
+    js_get_z_index <- "function getZIndex() {
+        const container = document.querySelector('.empty-state-container');
+      return window.getComputedStyle(container).zIndex;
+      };
+
+      getZIndex();"
+
+    expect_equal(app$get_js(js_get_z_index), "3")
+    app$stop()
+  })
 })
 
 describe("use_empty_state()", {
